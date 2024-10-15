@@ -1,5 +1,11 @@
 import React, { useState,useEffect } from "react";
 import MDEditor from "@uiw/react-md-editor";
+import RemarkPluginEmbed from '../plugins/RemarkEmbeds';
+import RemarkPluginGallery from '../plugins/RemarkGallery';
+
+//import rehypeRaw from "rehype-raw";
+//import remarkGfm from "remark-gfm";
+//import { visit } from "unist-util-visit";
 
 const CustomMDEditor = (props:any) => {
 
@@ -19,6 +25,12 @@ const CustomMDEditor = (props:any) => {
         onChange={setValue}
         hidden={props.hidden}
         commands={props.commands}
+        previewOptions={{
+          remarkPlugins: [[RemarkPluginEmbed],[RemarkPluginEmbed]],
+
+          // Retain raw HTML if needed
+          //rehypePlugins: [[rehypeRaw]],
+        }}
       />
   );
 };
